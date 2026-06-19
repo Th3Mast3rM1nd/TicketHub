@@ -1,0 +1,354 @@
+/* ══════════════════════════════════════════════
+   TicketSystem — Auth Pages
+   Solid indigo brand panel + clean form panel
+   ══════════════════════════════════════════════ */
+
+/* ── Layout ── */
+
+.auth-wrap {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Left: solid indigo brand panel */
+.auth-brand {
+  width: 45%;
+  background: linear-gradient(160deg, #3730A3 0%, #4F46E5 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle radial glow behind the logo area */
+.auth-brand::before {
+  content: '';
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(165,180,252,0.3) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.auth-brand-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 340px;
+  width: 100%;
+}
+
+/* Right: form panel */
+.auth-panel {
+  width: 55%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  background: var(--bg);
+}
+
+@keyframes card-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 400px;
+  animation: card-enter 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ── Brand panel content ── */
+
+.brand-logo-wrap {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 20px;
+}
+
+.brand-logo-wrap svg {
+  width: 64px;
+  height: 64px;
+  display: block;
+}
+
+.brand-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 8px;
+  letter-spacing: -0.02em;
+}
+
+.brand-tagline {
+  font-size: 16px;
+  color: rgba(255,255,255,0.75);
+  margin: 0 0 24px;
+}
+
+.brand-divider {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  margin: 0 0 24px;
+}
+
+.brand-benefits {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.brand-benefits li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255,255,255,0.9);
+  font-size: 15px;
+}
+
+/* Check icon inside benefit items */
+.brand-benefits li svg {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  color: #A5B4FC;
+}
+
+/* Testimonial card at the bottom of the brand panel */
+.brand-testimonial {
+  background: rgba(255,255,255,0.10);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.brand-testimonial-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.brand-testimonial-body {
+  flex: 1;
+}
+
+.brand-testimonial-quote {
+  font-size: 14px;
+  color: rgba(255,255,255,0.9);
+  font-style: italic;
+  margin: 0 0 6px;
+  line-height: 1.5;
+}
+
+.brand-testimonial-name {
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+  margin: 0;
+  font-weight: 500;
+}
+
+/* ── Form panel content ── */
+
+.auth-title {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text);
+  margin: 0 0 8px;
+  letter-spacing: -0.02em;
+}
+
+.auth-sub {
+  font-size: 16px;
+  color: var(--text-muted);
+  margin: 0 0 28px;
+}
+
+/* Fields wrapper — keeps vertical spacing between inputs */
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.form-group {
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+/* Inputs inside .form-group — auth PHP files use class="input" */
+.form-group .input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 15px;
+  box-sizing: border-box;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.form-group .input:focus {
+  outline: none;
+  border-color: #4F46E5;
+  box-shadow: 0 0 0 3px rgba(79,70,229,0.15);
+}
+
+/* Full-width button modifier */
+.btn-block {
+  width: 100%;
+  justify-content: center;
+  margin-top: 8px;
+  /* Shine sweep on hover */
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-block::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 2rem;
+  background: rgba(255,255,255,0.22);
+  transform: skewX(-13deg) translateX(-300%);
+  pointer-events: none;
+}
+
+.btn-block:hover::after {
+  transform: skewX(-13deg) translateX(1400%);
+  transition: transform 0.85s ease-in-out;
+}
+
+.auth-footer-link {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.auth-footer-link a {
+  color: #4F46E5;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.auth-footer-link a:hover {
+  text-decoration: underline;
+}
+
+/* Kept: page-switch link used in current login/register HTML */
+.auth-switch {
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-top: 20px;
+}
+.auth-switch a { color: var(--brand); font-weight: 500; }
+.auth-switch a:hover { text-decoration: underline; }
+
+/* Kept: password visibility toggle used in current HTML */
+.password-wrap { position: relative; }
+.password-wrap .input { padding-right: 44px; }
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 4px;
+  border-radius: 6px;
+  color: var(--text-muted);
+  transition: color 140ms ease;
+  line-height: 1;
+}
+.password-toggle:hover { color: var(--text); }
+
+/* ── Alert / flash messages ── */
+
+.alert-error {
+  background: #FEF2F2;
+  color: #DC2626;
+  border: 1px solid #FCA5A5;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+.alert-error ul { margin: 4px 0 0 16px; padding: 0; }
+
+.alert-success {
+  background: #F0FDF4;
+  color: #16A34A;
+  border: 1px solid #86EFAC;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+/* Dark mode alert overrides */
+[data-theme="dark"] .alert-error {
+  background: rgba(220,38,38,0.12);
+  color: #FCA5A5;
+  border-color: rgba(220,38,38,0.25);
+}
+
+[data-theme="dark"] .alert-success {
+  background: rgba(22,163,74,0.12);
+  color: #86EFAC;
+  border-color: rgba(22,163,74,0.25);
+}
+
+/* ── Responsive ── */
+
+/* Hide brand panel on tablets and below */
+@media (max-width: 768px) {
+  .auth-brand {
+    display: none;
+  }
+  .auth-panel {
+    width: 100%;
+  }
+}
+
+/* Compact padding on small phones */
+@media (max-width: 480px) {
+  .auth-panel {
+    padding: 48px 16px 32px;
+    align-items: flex-start;
+  }
+
+  .auth-card {
+    max-width: 100%;
+  }
+
+  .auth-title {
+    font-size: 24px;
+  }
+}
