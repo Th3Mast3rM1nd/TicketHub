@@ -1,4 +1,4 @@
-# 🎫 TicketHub – Modul 151 Web Application
+# 🎫 TicketSystem – Modul 151 Web Application
 
 A secure ticket system web application built with **PHP**, **MySQL** and **Apache2**.  
 Users can register, log in, write tickets visible to everyone, and manage their own tickets.  
